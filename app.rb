@@ -1,7 +1,7 @@
-require 'sinatra'
+require 'sinatra/base'
 
 class App < Sinatra::Base
   get '/' do
-    'Hello Nanobox!'
+    'Hello world!'
   end
 end
