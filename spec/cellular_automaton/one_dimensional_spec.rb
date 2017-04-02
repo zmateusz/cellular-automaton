@@ -15,4 +15,13 @@ RSpec.describe CellularAutomaton::OneDimensional do
       expect(automaton.generation).to eq starting_array
     end
   end
+
+  describe '#step' do
+    it 'returns new generation' do
+      automaton = described_class.new(starting_array)
+      new_generation = [0, 0, 0, 1, 1, 1, 0, 0, 0, 0]
+
+      expect(automaton.step).to eq(new_generation)
+    end
+  end
 end
