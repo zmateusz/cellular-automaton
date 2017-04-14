@@ -2,9 +2,10 @@ class CellularAutomaton
   class OneDimensional
     attr_reader :generation
 
-    def initialize(starting_generation)
+    def initialize(starting_generation, rule)
       @generation = starting_generation
       @new_generation = []
+      @rule_array = sprintf('%08b', rule).split('').map(&:to_i)
     end
 
     def step
@@ -24,16 +25,15 @@ class CellularAutomaton
     private
 
     def new_state(neighborhood)
-      # rule 30
       case neighborhood
-      when [1, 1, 1] then 0
-      when [1, 1, 0] then 0
-      when [1, 0, 1] then 0
-      when [1, 0, 0] then 1
-      when [0, 1, 1] then 1
-      when [0, 1, 0] then 1
-      when [0, 0, 1] then 1
-      when [0, 0, 0] then 0
+      when [1, 1, 1] then @rule_array[0]
+      when [1, 1, 0] then @rule_array[1]
+      when [1, 0, 1] then @rule_array[2]
+      when [1, 0, 0] then @rule_array[3]
+      when [0, 1, 1] then @rule_array[4]
+      when [0, 1, 0] then @rule_array[5]
+      when [0, 0, 1] then @rule_array[6]
+      when [0, 0, 0] then @rule_array[7]
       end
     end
   end
